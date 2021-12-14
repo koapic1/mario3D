@@ -1,0 +1,76 @@
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  #clockList {
+    height: auto;
+    li {
+      display: flex;
+      border-radius: 15px;
+      background-color: #fff;
+      padding: 40px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      justify-content: space-between;
+      align-items: center;
+      width: 800px;
+      height: 450px;
+      &.swiper-slide-active {
+        //background-color: rgba(255, 255, 255, 0.5);
+        //backdrop-filter: blur(10px);
+      }
+      .info {
+        .category {
+          font-size: 18px;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        .title {
+          font-size: 42px;
+          font-weight: 700;
+          margin-bottom: 30px;
+          text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+        }
+        .depth {
+          font-size: 20px;
+          padding-bottom: 10px;
+          margin-bottom: 80px;
+          border-bottom: 2px solid #f00;
+          display: inline-block;
+          strong {
+            font-weight: 700;
+          }
+        }
+        .price {
+          font-size: 24px;
+          font-weight: 700;
+        }
+      }
+      .img {
+        img {
+          height: 500px;
+        }
+      }
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    .swiper-pagination-bullet {
+      width: 14px;
+      height: 14px;
+      border: 3px solid #fff;
+      opacity: 1;
+      background-color: transparent;
+      transition: 0.25s ease;
+      &-active {
+        background-color: #fff;
+      }
+    }
+  }
+}
