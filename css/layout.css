@@ -1,6 +1,6 @@
 html { font-size: 10px; }
 
-body { overflow-y: hidden !important; font-size: 1.6rem; font-family: "Titillium Web", "Raleway", "Noto Sans KR", sans-serif; background-image: url(../images/bg02.jpg); background-repeat: no-repeat; background-size: cover; color: #111; height: 100vh; }
+body { overflow-y: hidden !important; font-size: 1.6rem; font-family: "Titillium Web", "Raleway", "Noto Sans KR", sans-serif; color: #111; }
 
 a { color: inherit; text-decoration: none; }
 

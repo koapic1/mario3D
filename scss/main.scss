@@ -6,6 +6,40 @@
     position: fixed;
     height: 100%;
     width: 100%;
+    background-image: url(../images/bg02.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    #lnb {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 50px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        z-index: 2;
+        li {
+            margin: 10px 0;
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+            &.on::before {
+                width: calc(100% + 10px);
+            }
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                border-radius: 100px;
+                background-color: $main-color;
+                left: -10px;
+                top: calc(50% - 1px);
+                transition: 0.25s;
+            }
+        }
+    }
     #charList {
         display: flex;
         justify-content: center;
@@ -15,6 +49,7 @@
         height: 100%;
         perspective: 5000px;
         perspective-origin: 50% 10%;
+        padding-left: 200px;
         li {
             display: flex;
             border-radius: 15px;

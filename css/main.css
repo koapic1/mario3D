@@ -1,6 +1,14 @@
-#main { overflow: hidden; position: fixed; height: 100%; width: 100%; }
+#main { overflow: hidden; position: fixed; height: 100%; width: 100%; background-image: url(../images/bg02.jpg); background-repeat: no-repeat; background-size: cover; }
 
-#main #charList { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; position: relative; width: 100%; height: 100%; -webkit-perspective: 5000px; perspective: 5000px; -webkit-perspective-origin: 50% 10%; perspective-origin: 50% 10%; }
+#main #lnb { position: absolute; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); left: 50px; font-size: 24px; font-weight: 700; color: #fff; z-index: 2; }
+
+#main #lnb li { margin: 10px 0; text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); position: relative; cursor: pointer; }
+
+#main #lnb li.on::before { width: calc(100% + 10px); }
+
+#main #lnb li::before { content: ""; display: block; position: absolute; width: 2px; height: 2px; border-radius: 100px; background-color: #bf0c14; left: -10px; top: calc(50% - 1px); -webkit-transition: 0.25s; transition: 0.25s; }
+
+#main #charList { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; position: relative; width: 100%; height: 100%; -webkit-perspective: 5000px; perspective: 5000px; -webkit-perspective-origin: 50% 10%; perspective-origin: 50% 10%; padding-left: 200px; }
 
 #main #charList li { display: -webkit-box; display: -ms-flexbox; display: flex; border-radius: 15px; padding: 40px; -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; width: 850px; height: 400px; position: absolute; }
 

@@ -1,4 +1,5 @@
 const charListUL = $("#main #charList");
+const lnbUL = $("#main #lnb");
 let charSlider = null;
 let itemTweener = null;
 let total = 0;
@@ -13,9 +14,13 @@ function loadJson(jsondata) {
             //console.log(res.items);
             const charList = res.items;
             let output = "";
+            let lnboutput = "";
             total = charList.length;
             _z = 0;
             $.each(charList, function (idx, item) {
+                lnboutput += `
+                <li>${item.title}</li>
+                `;
                 output += `
                 <li style="background:${item.bg}; transform:translateZ(${-zAmount * idx}px); z-index:${total - idx}">
                     <div class="img">
@@ -30,6 +35,8 @@ function loadJson(jsondata) {
                 `;
             });
             charListUL.html(output);
+            lnbUL.html(lnboutput);
+            $("#lnb li").eq(0).addClass("on");
         },
         error: function (err) {
             //console.log(err);
@@ -49,6 +56,20 @@ gnbList.on("click", function (e) {
     loadJson(jsonFile);
 });
 
+let oldIndex = 0;
+const lnbList = $("#lnb li");
+$("#lnb").on("click", "li", function () {
+    //console.log("aaa");
+    if ($(this).hasClass("on")) return;
+    $(this).addClass("on").siblings("li").removeClass("on");
+    _z = zAmount * $(this).index();
+    const _duration = Math.min(1.5, Math.abs($(this).index() - oldIndex) * 0.5);
+    $("#charList li").each(function (idx, item) {
+        gsap.to(item, { z: _z - zAmount * idx, duration: _duration });
+    });
+    oldIndex = $(this).index();
+});
+
 $(window).on("mousewheel", function (e) {
     //console.log(e.originalEvent.deltaX);
     const wheel = e.originalEvent.deltaY;
@@ -59,6 +80,7 @@ $(window).on("mousewheel", function (e) {
             _z = zAmount * (total - 1);
             return;
         }
+        _z += wheelStep;
     } else {
         //console.log("위로");
         _z -= wheelStep;
@@ -66,8 +88,12 @@ $(window).on("mousewheel", function (e) {
             _z = 0;
             return;
         }
+        _z -= wheelStep;
     }
+    const itemList = $("#itemList li");
     $("#charList li").each(function (idx, item) {
         gsap.to(item, { z: _z - zAmount * idx });
     });
+    const lnbSelected = Math.floor(_z / zAmount);
+    $("#lnb li").eq(lnbSelected).addClass("on").siblings("li").removeClass("on");
 });
